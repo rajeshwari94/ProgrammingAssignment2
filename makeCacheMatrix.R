@@ -14,16 +14,16 @@ makeCacheMatrix <- function(x = matrix()){
     list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
 }
 
-cachemean <- function(x, ...) {
-  m <- x$getinverse()
-  if(!is.null(m)) {
+cachesolve <- function(i, ...) {
+  i <- x$getinverse()
+  if(!is.null(i)) {
     message("getting cached data")
-    return(m)
+    return(i)
   }
   data <- x$get()
   
-  m <- solve(data, ...)
-  x$setinverse(m)
-  m
+  i <- solve(data, ...)
+  x$setinverse(i)
+  i
 }
 
